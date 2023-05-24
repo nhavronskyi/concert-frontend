@@ -6,7 +6,7 @@ import {Box, Grid} from "@mui/material";
 
 export function Event() {
     const [events, setEvents] = useState<IEvent[]>([]);
-    const url = "http://localhost:8080/events/"
+    const url = "http://localhost:8080/events"
 
     const credentials = btoa("admin:admin")
     const getAll = () => fetch(url, {
