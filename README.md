@@ -21,3 +21,4 @@ Run docker compose using terminal:
 ```bash
 root@root:/# docker compose up
 ```
+
