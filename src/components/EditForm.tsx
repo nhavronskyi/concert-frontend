@@ -8,7 +8,7 @@ import {updateEvent} from "../service/EventService";
 
 
 export function EditForm() {
-    const {id} = useParams<{ id?: string }>();
+    const {id} = useParams<{ id: string }>();
     const [event, setOldEvent] = useState<IEvent>();
     const navigate = useNavigate();
 
@@ -34,6 +34,24 @@ export function EditForm() {
                     navigate(-1);
                 });
         }
+    };
+
+    const resetFields = () => {
+        setOldEvent((prevEvent) => {
+            if (prevEvent) {
+                const { id } = prevEvent;
+                return {
+                    ...prevEvent,
+                    id,
+                    title: '',
+                    location: '',
+                    description: '',
+                    date: new Date(),
+                    price: 0,
+                };
+            }
+            return undefined;
+        });
     };
 
     useEffect((): void => {
@@ -91,6 +109,7 @@ export function EditForm() {
                     </Grid>
                     <Grid item xs={12}>
                         <Button variant="contained" type="submit">Save</Button>
+                        <Button variant="contained" onClick={resetFields}>Clear Fields</Button>
                     </Grid>
                 </Grid>
             </form>
