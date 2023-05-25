@@ -1,12 +1,17 @@
 import React from 'react';
-import {Event} from "./Event";
-import {Box} from "@mui/material";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+// import EditPage from "./pages/EditPage";
+import HomePage from "./pages/HomePage";
+
 
 function App() {
     return (
-        <Box>
-            <Event/>
-        </Box>
+        <BrowserRouter>
+            <Routes>
+                <Route index element={<HomePage />} />
+                {/*<Route path="/events/:id" element={<EditPage/>}/>*/}
+            </Routes>
+        </BrowserRouter>
     );
 }
 

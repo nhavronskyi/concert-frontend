@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {IEvent} from "./interfaces/IEvent";
-import './App.css';
-import {Box, Grid} from "@mui/material";
-
+import {IEvent} from "../interfaces/IEvent";
+import '../App.css';
+import {Box, Button, Grid} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 export function Event() {
     const [events, setEvents] = useState<IEvent[]>([]);
-    const url = "http://localhost:8080/events"
-
+    const url = "http://localhost:8080/events";
+    const navigate = useNavigate();
     const credentials = btoa("admin:admin")
+
     const getAll = () => fetch(url, {
         headers: {
             "Authorization": `Basic ${credentials}`
@@ -16,6 +17,10 @@ export function Event() {
     })
         .then(response => response.json())
         .then(json => setEvents(json));
+
+    const handleEditClick = (event: number) => {
+        navigate(`/events/${event}`);
+    };
 
     useEffect((): void => {
         getAll().then(e => e)
@@ -36,6 +41,7 @@ export function Event() {
                         <Box>Description: {event.description} </Box>
                         <Box>Date: {event.date.toString()} </Box>
                         <Box>Price: {event.price} hrn</Box>
+                        <Button onClick={() => handleEditClick(event.id)}>Edit</Button>
                     </Grid>
                 ))}
             </Grid>
