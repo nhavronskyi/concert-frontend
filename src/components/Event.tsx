@@ -3,6 +3,7 @@ import {IEvent} from "../interfaces/IEvent";
 import '../App.css';
 import {Box, Button, Grid} from "@mui/material";
 import {useNavigate} from "react-router-dom";
+import {CreateEvent} from "./CreateEvent";
 
 export function Event() {
     const [events, setEvents] = useState<IEvent[]>([]);
@@ -25,7 +26,6 @@ export function Event() {
     useEffect((): void => {
         getAll().then(e => e)
     }, []);
-
     return (
         <Box>
             <Grid container spacing={1}>
@@ -45,6 +45,7 @@ export function Event() {
                     </Grid>
                 ))}
             </Grid>
+            <CreateEvent/>
         </Box>
     )
 }
