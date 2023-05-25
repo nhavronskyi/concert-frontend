@@ -52,9 +52,9 @@ export function CreateEvent() {
             <Box><TextField name="price" id="price" label="Price" fullWidth variant="standard"
                             onChange={handleChanges}/></Box>
             <br/>
-            <Button type="submit" id="create" variant="contained"
+            <Button type="submit" id="create"
                     sx={{padding: "2px", margin: "2px"}}>create</Button>
-            <Button onClick={() => refresh(0)} id="refresh" variant="contained"
+            <Button onClick={() => refresh(0)} id="refresh"
                     sx={{padding: "2px", margin: "2px"}}>refresh</Button>
             </form>
         </Box>
