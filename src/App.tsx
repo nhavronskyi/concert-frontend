@@ -8,7 +8,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index element={<HomePage />} />
+                <Route index element={<HomePage/>}/>
                 {/*<Route path="/events/:id" element={<EditPage/>}/>*/}
             </Routes>
         </BrowserRouter>
