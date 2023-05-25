@@ -39,7 +39,7 @@ export function Event() {
                         <Box>Title: {event.title} </Box>
                         <Box>Location: {event.location} </Box>
                         <Box>Description: {event.description} </Box>
-                        <Box>Date: {event.date.toString()} </Box>
+                        <Box>Date: {event.date.toString().split("T")[0]} </Box>
                         <Box>Price: {event.price} hrn</Box>
                         <Button onClick={() => handleEditClick(event.id)}>Edit</Button>
                     </Grid>

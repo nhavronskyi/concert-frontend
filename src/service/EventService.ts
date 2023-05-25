@@ -29,3 +29,19 @@ export const updateEvent = (id: string, event: IEvent) => {
         body: JSON.stringify(event)
     });
 };
+export const createEvent = (event: {
+    date: string;
+    price: string;
+    description: string;
+    location: string;
+    title: string
+}) => {
+    return fetch(`${url}`, {
+        method: "post",
+        headers: {
+            "Authorization": `Basic ${credentials}`,
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(event)
+    });
+};

@@ -1,42 +1,35 @@
 import React, {useState} from "react";
 import {Box, Button, TextField} from "@mui/material";
+import {createEvent} from "../service/EventService";
+import {useNavigate} from "react-router-dom";
 
 
 export function CreateEvent() {
-    const [title, setTitle] = useState("")
-    const [location, setLocation] = useState("");
-    const [description, setDescription] = useState("");
-    const [date, setDate] = useState("");
-    const [price, setPrice] = useState("");
+    const
+        [title, setTitle] = useState(""),
+        [location, setLocation] = useState(""),
+        [description, setDescription] = useState(""),
+        [date, setDate] = useState(""),
+        [price, setPrice] = useState("");
 
     const handleChanges = (e: React.ChangeEvent<HTMLInputElement>): void => {
-        if (e.target.name === "title") {
-            setTitle(e.target.value);
-        } else if (e.target.name === "location") {
-            setLocation(e.target.value);
-        } else if (e.target.name === "description") {
-            setDescription(e.target.value);
-        } else if (e.target.name === "date") {
-            setDate(e.target.value);
-        } else if (e.target.name === "price") {
-            setPrice(e.target.value);
-        }
-    }
+            if (e.target.name === "title") {
+                setTitle(e.target.value);
+            } else if (e.target.name === "location") {
+                setLocation(e.target.value);
+            } else if (e.target.name === "description") {
+                setDescription(e.target.value);
+            } else if (e.target.name === "date") {
+                setDate(e.target.value);
+            } else if (e.target.name === "price") {
+                setPrice(e.target.value);
+            }
+        };
     const addEvent = (): void => {
-        const event = {title, location, description, date, price};
-
-        const credentials = btoa("admin:admin")
-
-        fetch("http://localhost:8080/events", {
-            method: "post",
-            headers: {
-                "content-type": "application/json",
-                "Authorization": `Basic ${credentials}`
-            },
-            body: JSON.stringify(event)
-        });
-        window.location.reload();
-    };
+            const event = {title, location, description, date, price};
+            createEvent(event).then(r => r);
+        };
+    const refresh = useNavigate();
 
     return (
         <Box sx={{
@@ -47,6 +40,7 @@ export function CreateEvent() {
             margin: "10px",
             backgroundColor: "white"
         }}>
+            <form onSubmit={addEvent}>
             <Box><TextField name="title" id="title" fullWidth label="Title" variant="standard"
                             onChange={handleChanges}/></Box>
             <Box><TextField name="location" id="location" fullWidth label="Location" variant="standard"
@@ -58,10 +52,11 @@ export function CreateEvent() {
             <Box><TextField name="price" id="price" label="Price" fullWidth variant="standard"
                             onChange={handleChanges}/></Box>
             <br/>
-            <Button onClick={addEvent} id="create" variant="contained"
+            <Button type="submit" id="create" variant="contained"
                     sx={{padding: "2px", margin: "2px"}}>create</Button>
-            <Button onClick={() => window.location.reload()} id="refresh" variant="contained"
+            <Button onClick={() => refresh(0)} id="refresh" variant="contained"
                     sx={{padding: "2px", margin: "2px"}}>refresh</Button>
+            </form>
         </Box>
     );
 }
