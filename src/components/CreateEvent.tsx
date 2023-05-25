@@ -13,22 +13,22 @@ export function CreateEvent() {
         [price, setPrice] = useState("");
 
     const handleChanges = (e: React.ChangeEvent<HTMLInputElement>): void => {
-            if (e.target.name === "title") {
-                setTitle(e.target.value);
-            } else if (e.target.name === "location") {
-                setLocation(e.target.value);
-            } else if (e.target.name === "description") {
-                setDescription(e.target.value);
-            } else if (e.target.name === "date") {
-                setDate(e.target.value);
-            } else if (e.target.name === "price") {
-                setPrice(e.target.value);
-            }
-        };
+        if (e.target.name === "title") {
+            setTitle(e.target.value);
+        } else if (e.target.name === "location") {
+            setLocation(e.target.value);
+        } else if (e.target.name === "description") {
+            setDescription(e.target.value);
+        } else if (e.target.name === "date") {
+            setDate(e.target.value);
+        } else if (e.target.name === "price") {
+            setPrice(e.target.value);
+        }
+    };
     const addEvent = (): void => {
-            const event = {title, location, description, date, price};
-            createEvent(event).then(r => r);
-        };
+        const event = {title, location, description, date, price};
+        createEvent(event).then(r => r);
+    };
     const refresh = useNavigate();
 
     return (
@@ -41,21 +41,21 @@ export function CreateEvent() {
             backgroundColor: "white"
         }}>
             <form onSubmit={addEvent}>
-            <Box><TextField name="title" id="title" fullWidth label="Title" variant="standard"
-                            onChange={handleChanges}/></Box>
-            <Box><TextField name="location" id="location" fullWidth label="Location" variant="standard"
-                            onChange={handleChanges}/></Box>
-            <Box><TextField name="description" id="description" fullWidth multiline rows={4} label="Description"
-                            variant="standard" onChange={handleChanges}/></Box>
-            <Box><TextField name="date" id="date" label="Date" fullWidth variant="standard"
-                            onChange={handleChanges}/></Box>
-            <Box><TextField name="price" id="price" label="Price" fullWidth variant="standard"
-                            onChange={handleChanges}/></Box>
-            <br/>
-            <Button type="submit" id="create"
-                    sx={{padding: "2px", margin: "2px"}}>create</Button>
-            <Button onClick={() => refresh(0)} id="refresh"
-                    sx={{padding: "2px", margin: "2px"}}>refresh</Button>
+                <Box><TextField name="title" id="title" fullWidth label="Title" variant="standard"
+                                onChange={handleChanges}/></Box>
+                <Box><TextField name="location" id="location" fullWidth label="Location" variant="standard"
+                                onChange={handleChanges}/></Box>
+                <Box><TextField name="description" id="description" fullWidth multiline rows={4} label="Description"
+                                variant="standard" onChange={handleChanges}/></Box>
+                <Box><TextField name="date" id="date" label="Date" fullWidth variant="standard"
+                                onChange={handleChanges}/></Box>
+                <Box><TextField name="price" id="price" label="Price" fullWidth variant="standard"
+                                onChange={handleChanges}/></Box>
+                <br/>
+                <Button type="submit" id="create"
+                        sx={{padding: "2px", margin: "2px"}}>create</Button>
+                <Button onClick={() => refresh(0)} id="refresh"
+                        sx={{padding: "2px", margin: "2px"}}>refresh</Button>
             </form>
         </Box>
     );

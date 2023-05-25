@@ -1,6 +1,6 @@
 import {IEvent} from "../interfaces/IEvent";
 
-const url: string  = "http://localhost:8080/events";
+const url: string = "http://localhost:8080/events";
 const credentials: string = btoa("admin:admin")
 
 const headers = {
