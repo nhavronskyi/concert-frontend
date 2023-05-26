@@ -8,11 +8,25 @@ body {
 
     margin-left: 15%;
     margin-right: 15%;
-    margin-top: 20px;
+    margin-top: 110px;
     background-color: beige;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.header {
+    height: 85px;
+}
+
+.scrolled.header {
+    height: 65px;
+    transition: height 0.5s;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
