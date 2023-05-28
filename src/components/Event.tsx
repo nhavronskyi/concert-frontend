@@ -4,6 +4,7 @@ import '../App.css';
 import {Box, Button, Grid} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import {CreateEvent} from "./CreateEvent";
+import {buttonStyle} from "../service/EventService";
 
 export function Event() {
     const [events, setEvents] = useState<IEvent[]>([]);
@@ -41,7 +42,7 @@ export function Event() {
                         <Box>Description: {event.description} </Box>
                         <Box>Date: {event.date.toString().split("T")[0]} </Box>
                         <Box>Price: {event.price} hrn</Box>
-                        <Button onClick={() => handleEditClick(event.id)}>Edit</Button>
+                        <Button variant="contained" onClick={() => handleEditClick(event.id)} sx={buttonStyle()}>Edit</Button>
                     </Grid>
                 ))}
             </Grid>

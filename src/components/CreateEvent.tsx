@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Box, Button, TextField} from "@mui/material";
-import {createEvent} from "../service/EventService";
+import {buttonStyle, createEvent} from "../service/EventService";
 import {useNavigate} from "react-router-dom";
 
 
@@ -31,6 +31,9 @@ export function CreateEvent() {
         };
     const refresh = useNavigate();
 
+
+
+
     return (
         <Box sx={{
             maxWidth: "40%",
@@ -41,21 +44,23 @@ export function CreateEvent() {
             backgroundColor: "white"
         }}>
             <form onSubmit={addEvent}>
-            <Box><TextField name="title" id="title" fullWidth label="Title" variant="standard"
-                            onChange={handleChanges}/></Box>
-            <Box><TextField name="location" id="location" fullWidth label="Location" variant="standard"
-                            onChange={handleChanges}/></Box>
-            <Box><TextField name="description" id="description" fullWidth multiline rows={4} label="Description"
-                            variant="standard" onChange={handleChanges}/></Box>
-            <Box><TextField name="date" id="date" label="Date" fullWidth variant="standard"
-                            onChange={handleChanges}/></Box>
-            <Box><TextField name="price" id="price" label="Price" fullWidth variant="standard"
-                            onChange={handleChanges}/></Box>
-            <br/>
-            <Button type="submit" id="create" variant="contained"
-                    sx={{padding: "2px", margin: "2px"}}>create</Button>
-            <Button onClick={() => refresh(0)} id="refresh" variant="contained"
-                    sx={{padding: "2px", margin: "2px"}}>refresh</Button>
+                <Box><TextField name="title" id="title" fullWidth label="Title" variant="standard"
+                                onChange={handleChanges}/></Box>
+                <Box><TextField name="location" id="location" fullWidth label="Location" variant="standard"
+                                onChange={handleChanges}/></Box>
+                <Box><TextField name="description" id="description" fullWidth multiline rows={4} label="Description"
+                                variant="standard" onChange={handleChanges}/></Box>
+                <Box><TextField name="date" id="date" label="Date" fullWidth variant="standard"
+                                onChange={handleChanges}/></Box>
+                <Box><TextField name="price" id="price" label="Price" fullWidth variant="standard"
+                                onChange={handleChanges}/></Box>
+                <br/>
+                <Box><input type="file" name="image" id="image"  onChange={handleChanges}/></Box>
+                <br/>
+                <Button type="submit" id="create" variant="contained"
+                        sx={buttonStyle}>create</Button>
+                <Button onClick={() => refresh(0)} id="refresh" variant="contained"
+                        sx={buttonStyle}>refresh fields</Button>
             </form>
         </Box>
     );

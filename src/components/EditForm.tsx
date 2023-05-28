@@ -3,7 +3,7 @@ import {IEvent} from "../interfaces/IEvent";
 import '../App.css';
 import {Box, Button, Grid, TextField} from "@mui/material";
 import {useParams, useNavigate} from "react-router-dom";
-import {getEvent} from "../service/EventService";
+import {buttonStyle, getEvent} from "../service/EventService";
 import {updateEvent} from "../service/EventService";
 
 
@@ -108,8 +108,8 @@ export function EditForm() {
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        <Button variant="contained" type="submit">Save</Button>
-                        <Button variant="contained" onClick={resetFields}>Clear Fields</Button>
+                        <Button sx={buttonStyle()} variant="contained" type="submit">Save</Button>
+                        <Button sx={buttonStyle()} variant="contained" onClick={resetFields}>Clear Fields</Button>
                     </Grid>
                 </Grid>
             </form>
