@@ -5,7 +5,6 @@ import {Box, Button, Grid} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import {CreateEvent} from "./CreateEvent";
 import {deleteEvent, getAllEvents, buttonStyle} from "../service/EventService";
-import {buttonStyle} from "../service/EventService";
 
 export function Event() {
     const [events, setEvents] = useState<IEvent[]>([]);
@@ -37,7 +36,7 @@ export function Event() {
                         <Box>Date: {event.date.toString().split("T")[0]} </Box>
                         <Box>Price: {event.price} hrn</Box>                       
                         <Button variant="contained" onClick={() => handleEditClick(event.id)} sx={buttonStyle()}>Edit</Button>
-                        <Button onClick={() => deleteEvent(event.id)}>Delete</Button>
+                        <Button variant="contained" onClick={() => deleteEvent(event.id)} sx={buttonStyle()}>Delete</Button>
                     </Grid>
                 ))}
             </Grid>
