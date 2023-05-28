@@ -13,22 +13,22 @@ export function CreateEvent() {
         [price, setPrice] = useState("");
 
     const handleChanges = (e: React.ChangeEvent<HTMLInputElement>): void => {
-            if (e.target.name === "title") {
-                setTitle(e.target.value);
-            } else if (e.target.name === "location") {
-                setLocation(e.target.value);
-            } else if (e.target.name === "description") {
-                setDescription(e.target.value);
-            } else if (e.target.name === "date") {
-                setDate(e.target.value);
-            } else if (e.target.name === "price") {
-                setPrice(e.target.value);
-            }
-        };
+        if (e.target.name === "title") {
+            setTitle(e.target.value);
+        } else if (e.target.name === "location") {
+            setLocation(e.target.value);
+        } else if (e.target.name === "description") {
+            setDescription(e.target.value);
+        } else if (e.target.name === "date") {
+            setDate(e.target.value);
+        } else if (e.target.name === "price") {
+            setPrice(e.target.value);
+        }
+    };
     const addEvent = (): void => {
-            const event = {title, location, description, date, price};
-            createEvent(event).then(r => r);
-        };
+        const event = {title, location, description, date, price};
+        createEvent(event).then(r => r);
+    };
     const refresh = useNavigate();
 
 

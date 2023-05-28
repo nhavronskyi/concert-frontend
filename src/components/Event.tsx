@@ -4,20 +4,14 @@ import '../App.css';
 import {Box, Button, Grid} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import {CreateEvent} from "./CreateEvent";
+import {deleteEvent, getAllEvents, buttonStyle} from "../service/EventService";
 import {buttonStyle} from "../service/EventService";
 
 export function Event() {
     const [events, setEvents] = useState<IEvent[]>([]);
-    const url = "http://localhost:8080/events";
     const navigate = useNavigate();
-    const credentials = btoa("admin:admin")
 
-    const getAll = () => fetch(url, {
-        headers: {
-            "Authorization": `Basic ${credentials}`
-        }
-    })
-        .then(response => response.json())
+    getAllEvents().then(response => response.json())
         .then(json => setEvents(json));
 
     const handleEditClick = (event: number) => {
@@ -25,7 +19,7 @@ export function Event() {
     };
 
     useEffect((): void => {
-        getAll().then(e => e)
+        getAllEvents().then(e => e)
     }, []);
     return (
         <Box>
@@ -41,8 +35,9 @@ export function Event() {
                         <Box>Location: {event.location} </Box>
                         <Box>Description: {event.description} </Box>
                         <Box>Date: {event.date.toString().split("T")[0]} </Box>
-                        <Box>Price: {event.price} hrn</Box>
+                        <Box>Price: {event.price} hrn</Box>                       
                         <Button variant="contained" onClick={() => handleEditClick(event.id)} sx={buttonStyle()}>Edit</Button>
+                        <Button onClick={() => deleteEvent(event.id)}>Delete</Button>
                     </Grid>
                 ))}
             </Grid>
