@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Box, Button, TextField} from "@mui/material";
-import {createEvent} from "../service/EventService";
+import {buttonStyle, createEvent} from "../service/EventService";
 import {useNavigate} from "react-router-dom";
 
 
@@ -31,6 +31,9 @@ export function CreateEvent() {
     };
     const refresh = useNavigate();
 
+
+
+
     return (
         <Box sx={{
             maxWidth: "40%",
@@ -52,10 +55,12 @@ export function CreateEvent() {
                 <Box><TextField name="price" id="price" label="Price" fullWidth variant="standard"
                                 onChange={handleChanges}/></Box>
                 <br/>
-                <Button type="submit" id="create"
-                        sx={{padding: "2px", margin: "2px"}}>create</Button>
-                <Button onClick={() => refresh(0)} id="refresh"
-                        sx={{padding: "2px", margin: "2px"}}>refresh</Button>
+                <Box><input type="file" name="image" id="image"  onChange={handleChanges}/></Box>
+                <br/>
+                <Button type="submit" id="create" variant="contained"
+                        sx={buttonStyle}>create</Button>
+                <Button onClick={() => refresh(0)} id="refresh" variant="contained"
+                        sx={buttonStyle}>refresh fields</Button>
             </form>
         </Box>
     );

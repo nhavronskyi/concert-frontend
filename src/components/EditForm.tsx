@@ -2,12 +2,13 @@ import React, {useEffect, useState} from "react";
 import {IEvent} from "../interfaces/IEvent";
 import '../App.css';
 import {Box, Button, Grid, TextField} from "@mui/material";
-import {useNavigate, useParams} from "react-router-dom";
-import {getEvent, updateEvent} from "../service/EventService";
+import {useParams, useNavigate} from "react-router-dom";
+import {buttonStyle, getEvent} from "../service/EventService";
+import {updateEvent} from "../service/EventService";
 
 
 export function EditForm() {
-    const {id} = useParams<{ id?: string }>();
+    const {id} = useParams<{ id: string }>();
     const [event, setOldEvent] = useState<IEvent>();
     const navigate = useNavigate();
 
@@ -33,6 +34,24 @@ export function EditForm() {
                     navigate(-1);
                 });
         }
+    };
+
+    const resetFields = () => {
+        setOldEvent((prevEvent) => {
+            if (prevEvent) {
+                const { id } = prevEvent;
+                return {
+                    ...prevEvent,
+                    id,
+                    title: '',
+                    location: '',
+                    description: '',
+                    date: new Date(),
+                    price: 0,
+                };
+            }
+            return undefined;
+        });
     };
 
     useEffect((): void => {
@@ -89,7 +108,8 @@ export function EditForm() {
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        <Button variant="contained" type="submit">Save</Button>
+                        <Button sx={buttonStyle()} variant="contained" type="submit">Save</Button>
+                        <Button sx={buttonStyle()} variant="contained" onClick={resetFields}>Clear Fields</Button>
                     </Grid>
                 </Grid>
             </form>

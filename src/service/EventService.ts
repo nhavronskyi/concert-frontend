@@ -46,3 +46,14 @@ export const createEvent = (event: {
         body: JSON.stringify(event)
     });
 };
+
+export const buttonStyle = () => {
+    return {
+        padding: "2px",
+        margin: "2px",
+        backgroundColor: "black",
+        ":hover": {
+            backgroundColor: "white",
+            color: "black"
+        }}
+}
