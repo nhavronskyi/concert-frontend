@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {Box, Button, TextField} from "@mui/material";
-import {buttonStyle, createEvent} from "../service/EventService";
+import {Box, Button, Input, TextField} from "@mui/material";
+import {buttonStyle, createEvent, uploadImage} from "../service/EventService";
 import {useNavigate} from "react-router-dom";
 
 
@@ -10,8 +10,8 @@ export function CreateEvent() {
         [location, setLocation] = useState(""),
         [description, setDescription] = useState(""),
         [date, setDate] = useState(""),
-        [price, setPrice] = useState("");
-
+        [price, setPrice] = useState(""),
+        [image, setImage] = useState("");
     const handleChanges = (e: React.ChangeEvent<HTMLInputElement>): void => {
         if (e.target.name === "title") {
             setTitle(e.target.value);
@@ -23,10 +23,15 @@ export function CreateEvent() {
             setDate(e.target.value);
         } else if (e.target.name === "price") {
             setPrice(e.target.value);
+        } else if (e.target.name === "image"){
+            // @ts-ignore
+            const fileLoaded = URL.createObjectURL(e.target.files[0])
+            uploadImage(10, fileLoaded);
+            setImage(fileLoaded);
         }
     };
     const addEvent = (): void => {
-        const event = {title, location, description, date, price};
+        const event = {title, location, description, date, price, image};
         createEvent(event).then(r => r);
     };
     const refresh = useNavigate();
@@ -55,8 +60,10 @@ export function CreateEvent() {
                 <Box><TextField name="price" id="price" label="Price" fullWidth variant="standard"
                                 onChange={handleChanges}/></Box>
                 <br/>
-                <Box><input type="file" name="image" id="image"  onChange={handleChanges}/></Box>
-                <br/>
+                <Input type="file" name="image" id="image"
+                            onChange={handleChanges}/>
+                <br/><br/>
+
                 <Button type="submit" id="create" variant="contained"
                         sx={buttonStyle}>create</Button>
                 <Button onClick={() => refresh(0)} id="refresh" variant="contained"

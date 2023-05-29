@@ -35,6 +35,7 @@ export function Event() {
                         <Box>Description: {event.description} </Box>
                         <Box>Date: {event.date.toString().split("T")[0]} </Box>
                         <Box>Price: {event.price} hrn</Box>                       
+                        <Box>Image: {event.image} <a href={event.image}> </a></Box>
                         <Button variant="contained" onClick={() => handleEditClick(event.id)} sx={buttonStyle()}>Edit</Button>
                         <Button variant="contained" onClick={() => deleteEvent(event.id)} sx={buttonStyle()}>Delete</Button>
                     </Grid>

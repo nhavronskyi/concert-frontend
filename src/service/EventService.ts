@@ -47,6 +47,17 @@ export const createEvent = (event: {
     });
 };
 
+export const uploadImage = (id: number, file: string) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    fetch(`${url}/image/${id}`, {
+        method: 'post',
+        headers: headers,
+        body: formData
+    }).then(r => r);
+};
+
 export const buttonStyle = () => {
     return {
         padding: "2px",

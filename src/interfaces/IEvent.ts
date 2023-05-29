@@ -4,5 +4,6 @@ export interface IEvent {
     location: string,
     description: string,
     date: Date,
-    price: number
+    price: number,
+    image: string
 }
