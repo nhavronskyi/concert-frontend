@@ -24,10 +24,11 @@ export function CreateEvent() {
         } else if (e.target.name === "price") {
             setPrice(e.target.value);
         } else if (e.target.name === "image"){
+            e.preventDefault()
             // @ts-ignore
-            const fileLoaded = URL.createObjectURL(e.target.files[0])
-            uploadImage(10, fileLoaded);
-            setImage(fileLoaded);
+            uploadImage(5, e.target.files[0]);
+            // @ts-ignore
+            setImage(e.target.files[0]);
         }
     };
     const addEvent = (): void => {

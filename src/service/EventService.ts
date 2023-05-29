@@ -47,13 +47,19 @@ export const createEvent = (event: {
     });
 };
 
-export const uploadImage = (id: number, file: string) => {
+export const uploadImage = (id: number, file: any) => {
     const formData = new FormData();
     formData.append('file', file);
 
+    console.log(file);
+    console.log(formData)
+
     fetch(`${url}/image/${id}`, {
         method: 'post',
-        headers: headers,
+        headers: {
+            "Authorization": `Basic ${credentials}`,
+            "content-type": "multipart/form-data; boundary=5"
+        },
         body: formData
     }).then(r => r);
 };
