@@ -58,7 +58,6 @@ export const uploadImage = (id: number, file: any) => {
         method: 'post',
         headers: {
             "Authorization": `Basic ${credentials}`,
-            "content-type": "multipart/form-data; boundary=5"
         },
         body: formData
     }).then(r => r);
