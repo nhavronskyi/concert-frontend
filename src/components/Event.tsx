@@ -4,27 +4,25 @@ import '../App.css';
 import {Box, Button, Grid} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import {CreateEvent} from "./CreateEvent";
-import {deleteEvent, getAllEvents, buttonStyle} from "../service/EventService";
+import {buttonStyle, deleteEvent, getAllEvents} from "../service/EventService";
 
 export function Event() {
     const [events, setEvents] = useState<IEvent[]>([]);
     const navigate = useNavigate();
-
-    getAllEvents().then(response => response.json())
-        .then(json => setEvents(json));
 
     const handleEditClick = (event: number) => {
         navigate(`/events/${event}`);
     };
 
     useEffect((): void => {
-        getAllEvents().then(e => e)
+        getAllEvents().then(response => response.json())
+            .then(json => setEvents(json));
     }, []);
     return (
         <Box>
             <Grid container spacing={1}>
                 {events.map((event: IEvent) => (
-                    <Grid key={event.id} item xs={6} md={4} sx={{
+                    <Grid key={event.id} item md={4} sx={{
                         borderStyle: "outset",
                         borderRadius: '10px',
                         padding: "10px",
@@ -34,9 +32,15 @@ export function Event() {
                         <Box>Location: {event.location} </Box>
                         <Box>Description: {event.description} </Box>
                         <Box>Date: {event.date.toString().split("T")[0]} </Box>
-                        <Box>Price: {event.price} hrn</Box>                       
-                        <Button variant="contained" onClick={() => handleEditClick(event.id)} sx={buttonStyle()}>Edit</Button>
-                        <Button variant="contained" onClick={() => deleteEvent(event.id)} sx={buttonStyle()}>Delete</Button>
+                        <Box>Price: {event.price} hrn</Box>
+                        <Box>Image: <br/> <img src={event.image} width="60" height="60" alt="page not found"/></Box>
+
+                        <Button variant="contained" onClick={() => handleEditClick(event.id)}
+                                sx={buttonStyle()}>Edit</Button>
+                        <Button variant="contained" onClick={() => {
+                            deleteEvent(event.id)
+                            navigate(0)
+                        }} sx={buttonStyle()}>Delete</Button>
                     </Grid>
                 ))}
             </Grid>

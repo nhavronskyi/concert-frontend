@@ -2,9 +2,8 @@ import React, {useEffect, useState} from "react";
 import {IEvent} from "../interfaces/IEvent";
 import '../App.css';
 import {Box, Button, Grid, TextField} from "@mui/material";
-import {useParams, useNavigate} from "react-router-dom";
-import {buttonStyle, getEvent} from "../service/EventService";
-import {updateEvent} from "../service/EventService";
+import {useNavigate, useParams} from "react-router-dom";
+import {buttonStyle, getEvent, updateEvent} from "../service/EventService";
 
 
 export function EditForm() {
@@ -39,7 +38,7 @@ export function EditForm() {
     const resetFields = () => {
         setOldEvent((prevEvent) => {
             if (prevEvent) {
-                const { id } = prevEvent;
+                const {id} = prevEvent;
                 return {
                     ...prevEvent,
                     id,

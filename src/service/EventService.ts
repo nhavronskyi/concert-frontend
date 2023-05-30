@@ -47,6 +47,23 @@ export const createEvent = (event: {
     });
 };
 
+export const uploadImage = (title: string, file: any) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    fetch(`${url}/image/${title}`, {
+        method: 'post',
+        headers: {
+            "Authorization": `Basic ${credentials}`
+        },
+        body: formData
+    }).then(r => r);
+};
+
+export const getImage = (title: string) => {
+    return `${url}/image/${title}`;
+};
+
 export const buttonStyle = () => {
     return {
         padding: "2px",
@@ -55,5 +72,6 @@ export const buttonStyle = () => {
         ":hover": {
             backgroundColor: "white",
             color: "black"
-        }}
+        }
+    }
 }
