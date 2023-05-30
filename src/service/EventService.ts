@@ -34,7 +34,7 @@ export const deleteEvent = (id: number) => {
     });
 }
 export const createEvent = (event: {
-    date: string;
+    date: Date;
     price: string;
     description: string;
     location: string;

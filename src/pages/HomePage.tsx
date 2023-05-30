@@ -5,7 +5,7 @@ import Header from "../components/Header";
 
 function HomePage() {
     return (
-        <Box>
+        <Box className="body">
             <Header/>
             <Event/>
         </Box>

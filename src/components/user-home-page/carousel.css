@@ -1,0 +1,81 @@
+.image-container {
+    position: relative;
+    margin-top: 80px;
+    width: 100%;
+    height: 90vh;
+}
+
+.image-content {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.event-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 20px 20px 20px 0;
+}
+
+.event-title-description{
+    position: absolute;
+    top: 30%;
+    width: 40%;
+}
+
+.event-title {
+    font-size: 3.0rem;
+    text-align: center;
+    font-weight: bold;
+}
+.event-description {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #cecece;
+}
+
+.event-location {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.event-date-price {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 15%;
+    font-size: 1.3rem;
+}
+
+.event-date, .event-price {
+    flex-basis: 50%;
+    text-align: center;
+}
+
+.event-date::before,
+.event-price::before {
+    content: "  • ";
+}
+
+.event-date::before {
+    color: #024aff;
+}
+
+.event-price::before {
+    color: #FFC107;
+}
