@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Box, Button, Input, TextField} from "@mui/material";
-import {buttonStyle, createEvent, uploadImage} from "../service/EventService";
+import {buttonStyle, createEvent, getImage, uploadImage} from "../service/EventService";
 import {useNavigate} from "react-router-dom";
 
 
@@ -23,12 +23,12 @@ export function CreateEvent() {
             setDate(e.target.value);
         } else if (e.target.name === "price") {
             setPrice(e.target.value);
-        } else if (e.target.name === "image"){
-            e.preventDefault()
-            // @ts-ignore
-            uploadImage(5, e.target.files[0]);
-            // @ts-ignore
-            setImage(e.target.files[0]);
+        } else if (e.target.name === "image") {
+            const files = e.target.files;
+            if (files) {
+                uploadImage(title, files[0]);
+                setImage(getImage(title));
+            }
         }
     };
     const addEvent = (): void => {
@@ -36,9 +36,6 @@ export function CreateEvent() {
         createEvent(event).then(r => r);
     };
     const refresh = useNavigate();
-
-
-
 
     return (
         <Box sx={{
@@ -62,7 +59,7 @@ export function CreateEvent() {
                                 onChange={handleChanges}/></Box>
                 <br/>
                 <Input type="file" name="image" id="image"
-                            onChange={handleChanges}/>
+                       onChange={handleChanges}/>
                 <br/><br/>
 
                 <Button type="submit" id="create" variant="contained"

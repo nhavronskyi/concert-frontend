@@ -47,20 +47,21 @@ export const createEvent = (event: {
     });
 };
 
-export const uploadImage = (id: number, file: any) => {
+export const uploadImage = (title: string, file: any) => {
     const formData = new FormData();
     formData.append('file', file);
 
-    console.log(file);
-    console.log(formData)
-
-    fetch(`${url}/image/${id}`, {
+    fetch(`${url}/image/${title}`, {
         method: 'post',
         headers: {
-            "Authorization": `Basic ${credentials}`,
+            "Authorization": `Basic ${credentials}`
         },
         body: formData
     }).then(r => r);
+};
+
+export const getImage = (title: string) => {
+    return `${url}/image/${title}`;
 };
 
 export const buttonStyle = () => {
@@ -71,5 +72,6 @@ export const buttonStyle = () => {
         ":hover": {
             backgroundColor: "white",
             color: "black"
-        }}
+        }
+    }
 }
