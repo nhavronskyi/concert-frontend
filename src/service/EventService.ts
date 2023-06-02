@@ -13,6 +13,12 @@ export const getAllEvents = () => {
     })
 }
 
+export const getPaginatedEvents = (page: number, size: number) => {
+    return fetch(`${url}/pagination?page=${page}&size=${size}`, {
+        headers: headers
+    })
+}
+
 export const getEvent = (id: string) => {
     return fetch(`${url}/${id}`, {
         headers: headers,
