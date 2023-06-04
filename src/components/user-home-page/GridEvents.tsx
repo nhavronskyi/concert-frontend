@@ -3,6 +3,7 @@ import {IEvent} from "../../interfaces/IEvent";
 import {getPaginatedEvents} from "../../service/EventService";
 import React, {useEffect, useState} from "react";
 import {Pagination} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 function GridEvents() {
 
@@ -22,6 +23,12 @@ function GridEvents() {
 
     const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
         setPage(newPage - 1);
+    };
+
+    const navigate = useNavigate();
+    const handleMoreClick = (event: number) => {
+        navigate(`/events/show/${event}`);
+        window.scrollTo(0, 0);
     };
 
     return (
@@ -46,8 +53,8 @@ function GridEvents() {
                         <div className="box-container">
                             <div className="box-title">{event.title} </div>
                             <div className="box-location">{event.location} </div>
-                            <button className="black-btn black-btn-small">
-                                More
+                            <button className="black-btn black-btn-small" onClick={() => handleMoreClick(event.id)}>
+                                Більше
                             </button>
                         </div>
                     </li>
