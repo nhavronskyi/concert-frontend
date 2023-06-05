@@ -1,0 +1,265 @@
+.main-img {
+    position: relative;
+    margin-top: 80px;
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.img-cover {
+    border: 3px solid #000;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.image-text {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    width: 100%;
+    background-color: rgba(210, 203, 203, 0.31);
+    position: relative;
+    font-weight: 700;
+    text-align: center;
+    color: black;
+    font-size: 36px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.section1 {
+    flex-basis: 70%;
+    padding: 20px;
+}
+
+.section2 {
+    flex-basis: 30%;
+    padding: 20px;
+}
+
+.about-event {
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 38px;
+    text-transform: uppercase;
+    color: #17181C;
+}
+
+.about-event-info {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+    color: #17181C;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.section1 {
+    color: black;
+    font-size: 1.2em;
+}
+
+.section1 h1,
+.section1 h2 {
+    font-weight: 700;
+}
+
+.section1 h3,
+.section1 h4 {
+    padding-top: 20px;
+    font-weight: 600;
+}
+
+.section1 h5,
+.section1 h6 {
+    padding-top: 20px;
+    font-weight: 500;
+}
+
+.section2-fixed {
+    border: 1px solid #000;
+    position: sticky;
+    top: 100px;
+    z-index: 1;
+    background-color: #fff;
+}
+
+.black-box {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+}
+
+.section2-text {
+    padding: 20px;
+}
+
+.icon-text {
+    font-weight: 400;
+    font-size: 18px;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.container img {
+    margin-right: 15px;
+    width: 25px;
+    height: 25px;
+}
+
+.container p {
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+
+.black-btn-sm {
+    position: relative;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 8px 30px;
+    border: 1px solid #17181C;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #a61a1a;
+    background-color: rgb(255, 255, 255);
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 0 10px 0;
+}
+
+@media (max-width: 768px) {
+    .image-text {
+        font-size: 22px;
+    }
+
+    .main-img {
+        height: 50vh;
+    }
+
+    .section1 {
+        flex-basis: 100%;
+    }
+
+    .section2 {
+        flex-basis: 100%;
+    }
+
+
+    .container {
+        margin: 0;
+    }
+
+    .about-event {
+        font-size: 1.2em;
+    }
+
+    .about-event-info {
+        font-size: 18px;
+        line-height: 28px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .section1 {
+        font-size: 1em;
+    }
+
+    .section1 h1,
+    .section1 h2 {
+        font-weight: 700;
+        font-size: 1.5em;
+    }
+
+    .section1 h3,
+    .section1 h4 {
+        padding-top: 15px;
+        font-weight: 600;
+        font-size: 1em;
+    }
+
+    .section1 h5,
+    .section1 h6 {
+        padding-top: 15px;
+        font-weight: 500;
+    }
+
+    .icon-text {
+        font-size: 16px;
+    }
+
+    .black-btn-sm {
+        font-size: 16px;
+    }
+
+    .black-box {
+        font-size: 16px;
+    }
+
+    .container img {
+        width: 17px;
+        height: 17px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .main-img {
+        height: 35vh;
+    }
+
+    .image-text {
+        font-size: 16px;
+    }
+
+    .section1 {
+        font-size: 0.9em;
+    }
+
+    .about-event {
+        font-size: 1.3rem;
+        line-height: 30px;
+    }
+
+    .about-event-info {
+        font-size: 16px;
+        line-height: 24px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .section1 h3,
+    .section1 h4 {
+        padding-top: 10px;
+    }
+
+    .section1 h5,
+    .section1 h6 {
+        padding-top: 10px;
+    }
+
+    .icon-text {
+        font-size: 14px;
+    }
+
+    .black-btn-sm {
+        font-size: 14px;
+    }
+}

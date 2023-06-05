@@ -1,0 +1,144 @@
+.editor-container {
+    margin: 30px auto;
+    border: 2px solid #ddd;
+}
+
+.toolbar {
+    border-bottom: 2px solid #ddd;
+    font-size: 16px;
+    font-family: "Georgia", serif;
+}
+
+.toolbar-controls {
+    font-family: "Helvetica", sans-serif;
+    font-size: 16px;
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.toolbar-button {
+    color: #696767;
+    cursor: pointer;
+    margin-right: 16px;
+    padding: 2px 0;
+    display: inline-block;
+}
+
+.toolbar-button-active {
+    color: #5890ff;
+}
+
+.editor {
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: text;
+    font-size: 16px;
+}
+
+.editor .public-DraftEditorPlaceholder-root,
+.editor .public-DraftEditor-content {
+    margin: 0 -15px -15px;
+    padding: 15px;
+}
+
+.editor .public-DraftEditor-content {
+    min-height: 100px;
+}
+
+.editor--hidePlaceholder .public-DraftEditorPlaceholder-root {
+    display: none;
+}
+
+.editor .RichEditor-blockquote {
+    border-left: 5px solid #eee;
+    color: #666;
+    font-family: "Hoefler Text", "Georgia", serif;
+    font-style: italic;
+    margin: 16px 0;
+}
+
+.editor .public-DraftStyleDefault-pre {
+    background-color: rgba(0, 0, 0, 0.05);
+    font-family: "Inconsolata", "Menlo", "Consolas", monospace;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 36px;
+    text-transform: uppercase;
+    color: #17181C;
+    text-align: center;
+}
+.main-box {
+    border: 2px solid black;
+    width: 80%;
+    padding: 50px;
+    margin: 0 0 50px;
+}
+
+.create-container {
+    display: flex;
+    margin-top: 120px;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+}
+
+.customDateTimePicker .MuiDateTimePicker-root .MuiInputBase-root {
+    font-size: 32px;
+}
+
+.customDateTimePicker .MuiInputBase-root {
+    font-size: 18px;
+}
+.customDateTimePicker .MuiInputLabel-root {
+    font-size: 18px;
+}
+
+.fileInput {
+    border: 1px solid black;
+    background-color: white;
+}
+
+.fileInputLabel {
+    font-size: 18px;
+    padding: 8px 12px;
+    background-color: rgba(234, 232, 232, 0.63);
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.fileInputLabel .fileInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button-container button{
+    margin: 20px;
+
+    background: transparent;
+    border: 1px solid #17181C;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #17181C;
+    position: relative;
+    float: right;
+    font-size: 20px;
+    line-height: 25px;
+    padding: 12px 32px;
+}
+
