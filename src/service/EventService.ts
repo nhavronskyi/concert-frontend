@@ -15,11 +15,18 @@ export const getAllEvents = () => {
     })
 }
 
-export const getLocation = (locationData: ILocation) => {
+export const findLocation = (locationData: ILocation) => {
     return fetch(`${url}/location?latitude=${locationData.latitude}&longitude=${locationData.longitude}`, {
         method: "get",
         headers: headers,
     });
+}
+
+export const getAllLocations = () => {
+    return fetch(`${url}/location/all`, {
+        method: "get",
+        headers: headers
+    })
 }
 
 export const getEventsByLocation = (location: string) => {
@@ -37,7 +44,6 @@ export const getPaginatedEvents = (page: number, size: number) => {
 }
 
 export const getPaginatedEventsByLocation = (page: number, size: number, location: string) => {
-    console.log(location)
     return fetch(`${urlEvents}/pagination/location?page=${page}&size=${size}&location=${location}`, {
         method: "get",
         headers: headers,

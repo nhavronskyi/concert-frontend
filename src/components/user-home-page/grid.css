@@ -1,6 +1,9 @@
 .block {
     margin: 0;
-    padding: 90px 15% 0;
+    padding: 0 15% 0;
+}
+.empty-space {
+    margin-top: 100px;
 }
 
 .grid-header {
@@ -129,6 +132,26 @@
     font-size: 12px;
     line-height: 18px;
     padding: 8px 30px;
+}
+.filters {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.price, .city, .date, .search {
+    padding: 5px 10px;
+    margin-right: 35px;
+    font-size: 17px;
+    color: #4b4a4a;
+    border: 1px solid black;
+}
+
+.search{
+    color: white;
+    background-color: black;
+    border-color: white;
+    text-transform: uppercase;
+    padding: 5px 14px;
 }
 
 

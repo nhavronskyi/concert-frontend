@@ -2,7 +2,7 @@ import {Box} from "@mui/material";
 import '../App.css';
 import Header from "../components/Header";
 import ControlledCarousel from "../components/user-home-page/ControlledCarousel";
-import EventsLocation from "../components/user-home-page/EventsLocation";
+import EventsFilters from "../components/user-home-page/EventsFilters";
 
 
 function UserHomePage() {
@@ -10,7 +10,7 @@ function UserHomePage() {
         <Box>
             <Header/>
             <ControlledCarousel/>
-            <EventsLocation/>
+            <EventsFilters/>
         </Box>
     );
 }

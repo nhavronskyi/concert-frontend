@@ -4,12 +4,13 @@ import Editor from '@draft-js-plugins/editor';
 import {BlockStyleControls, InlineStyleControls} from '../show-event-page/TextEditor';
 import '../show-event-page/event-info.css';
 import './create-event.css';
-import {createEvent, getImage, uploadImage} from "../../service/EventService";
-import {TextField} from "@mui/material";
+import {getAllLocations, createEvent, getImage, uploadImage} from "../../service/EventService";
+import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {DateTimePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
 
 function UserCreateEvent() {
+    const [cities, setCities] = useState<string[]>([]);
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
     const [date, setDate] = useState<Date | null>(null);
@@ -18,13 +19,14 @@ function UserCreateEvent() {
     const [editorState, setEditorState] = useState(() => EditorState.createWithContent(ContentState.createFromText('Опишіть вашу подію')));
     const [selectedImageName, setSelectedImageName] = useState('');
 
+    getAllLocations()
+        .then(response => response.json())
+        .then(json => setCities(json));
+
     const handleChanges = (e: React.ChangeEvent<HTMLInputElement>): void => {
         switch (e.target.name) {
             case "title":
                 setTitle(e.target.value);
-                break;
-            case "location":
-                setLocation(e.target.value);
                 break;
             case "price":
                 setPrice(e.target.value);
@@ -60,10 +62,15 @@ function UserCreateEvent() {
         setEditorState(emptyEditorState);
     };
 
-    const addEvent = (): void => {
+    const addEvent = (e: React.FormEvent) => {
+        e.preventDefault();
+
         const description = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
-        const event = {title, location, description, date: date || new Date(), price, image};
-        createEvent(event).then(r => r);
+        const event = { title, location, description, date: date || new Date(), price, image };
+        createEvent(event)
+            .then(() => {
+                window.location.reload();
+            });
     };
 
 
@@ -78,13 +85,6 @@ function UserCreateEvent() {
                                style: {fontSize: '18px'},
                            }}
                            onChange={handleChanges}/>
-                <TextField name="location" fullWidth label="Розташування" variant="standard"
-                           value={location}
-                           style={{marginBottom: '40px'}}
-                           InputLabelProps={{
-                               style: {fontSize: '18px'},
-                           }}
-                           onChange={handleChanges}/>
 
                 <TextField name="price" label="Ціна" fullWidth variant="standard"
                            value={price}
@@ -93,8 +93,22 @@ function UserCreateEvent() {
                                style: {fontSize: '18px'},
                            }}
                            onChange={handleChanges}/>
-
-
+                <div className="customDateTimePicker">
+                    <FormControl style={{width: '283px'}}>
+                        <InputLabel>Розташування</InputLabel>
+                        <Select
+                            value={location}
+                            label="Розташування"
+                            onChange={e => setLocation(e.target.value)}
+                        >
+                            <MenuItem value="">Місто</MenuItem>
+                            {cities.map(city => (<MenuItem key={city} value={city}>
+                                {city}
+                            </MenuItem>))}
+                        </Select>
+                    </FormControl>
+                </div>
+                <br/>
                 <div className="customDateTimePicker">
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DateTimePicker
