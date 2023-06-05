@@ -1,6 +1,8 @@
 import {IEvent} from "../interfaces/IEvent";
+import {ILocation} from "../interfaces/ILocation";
 
-const url: string = "http://localhost:8080/events";
+const urlEvents: string = "http://localhost:8080/events";
+const url: string = "http://localhost:8080";
 const credentials: string = btoa("admin:admin")
 
 const headers = {
@@ -8,19 +10,48 @@ const headers = {
     "content-type": "application/json"
 };
 export const getAllEvents = () => {
-    return fetch(url, {
+    return fetch(urlEvents, {
         headers: headers
     })
 }
 
+export const getLocation = (locationData: ILocation) => {
+    return fetch(`${url}/location?latitude=${locationData.latitude}&longitude=${locationData.longitude}`, {
+        method: "get",
+        headers: headers,
+    });
+}
+
+export const getEventsByLocation = (location: string) => {
+    return fetch(`${urlEvents}/location?location=${location}`, {
+        method: "get",
+        headers: headers,
+    });
+}
+
+export const getPaginatedEvents = (page: number, size: number) => {
+    return fetch(`${urlEvents}/pagination?page=${page}&size=${size}`, {
+        method: "get",
+        headers: headers
+    })
+}
+
+export const getPaginatedEventsByLocation = (page: number, size: number, location: string) => {
+    console.log(location)
+    return fetch(`${urlEvents}/pagination/location?page=${page}&size=${size}&location=${location}`, {
+        method: "get",
+        headers: headers,
+    });
+}
+
 export const getEvent = (id: string) => {
-    return fetch(`${url}/${id}`, {
+    return fetch(`${urlEvents}/${id}`, {
         headers: headers,
     });
 };
 
 export const updateEvent = (id: string, event: IEvent) => {
-    return fetch(`${url}/${id}`, {
+    return fetch(`${urlEvents}/${id}`, {
         method: "put",
         headers: headers,
         body: JSON.stringify(event)
@@ -28,7 +59,7 @@ export const updateEvent = (id: string, event: IEvent) => {
 };
 
 export const deleteEvent = (id: number) => {
-    return fetch(`${url}/${id}`, {
+    return fetch(`${urlEvents}/${id}`, {
         method: "delete",
         headers: headers,
     });
@@ -40,7 +71,7 @@ export const createEvent = (event: {
     location: string;
     title: string
 }) => {
-    return fetch(`${url}`, {
+    return fetch(`${urlEvents}`, {
         method: "post",
         headers: headers,
         body: JSON.stringify(event)
@@ -51,7 +82,7 @@ export const uploadImage = (title: string, file: any) => {
     const formData = new FormData();
     formData.append('file', file);
 
-    fetch(`${url}/image/${title}`, {
+    fetch(`${urlEvents}/image/${title}`, {
         method: 'post',
         headers: {
             "Authorization": `Basic ${credentials}`
@@ -61,7 +92,7 @@ export const uploadImage = (title: string, file: any) => {
 };
 
 export const getImage = (title: string) => {
-    return `${url}/image/${title}`;
+    return `${urlEvents}/image/${title}`;
 };
 
 export const buttonStyle = () => {

@@ -4,6 +4,8 @@ import '../App.css';
 import {Box, Button, Grid, TextField} from "@mui/material";
 import {useNavigate, useParams} from "react-router-dom";
 import {buttonStyle, getEvent, updateEvent} from "../service/EventService";
+import {DateTimePicker, LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
 
 
 export function EditForm() {
@@ -22,6 +24,12 @@ export function EditForm() {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
         setOldEvent((prevEvent) => prevEvent && {...prevEvent, [name]: value});
+    };
+
+    const handleDateTimeChange = (value: Date | null) => {
+        if (value) {
+            setOldEvent((prevEvent) => prevEvent && {...prevEvent, date: value});
+        }
     };
 
     const handleFormSubmit = (e: React.FormEvent) => {
@@ -90,21 +98,22 @@ export function EditForm() {
                     </Grid>
                     <Grid item xs={12}>
                         <TextField
-                            name="date"
-                            label="Date"
-                            value={event?.date || ""}
-                            onChange={handleInputChange}
-                            fullWidth
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField
                             name="price"
                             label="Price"
                             value={event?.price || ""}
                             onChange={handleInputChange}
                             fullWidth
                         />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DateTimePicker
+                                label="Date and Time"
+                                value={event?.date ? new Date(event.date) : new Date()}
+                                defaultValue={new Date()}
+                                onChange={handleDateTimeChange}
+                            />
+                        </LocalizationProvider>
                     </Grid>
                     <Grid item xs={12}>
                         <Button sx={buttonStyle()} variant="contained" type="submit">Save</Button>
