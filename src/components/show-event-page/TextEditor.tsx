@@ -41,19 +41,19 @@ const StyleButton = (props: StyleButtonProps) => {
 };
 
 const BLOCK_TYPES = [
-    { label: "H1", style: "header-one" },
-    { label: "H2", style: "header-two" },
-    { label: "H3", style: "header-three" },
-    { label: "H4", style: "header-four" },
-    { label: "H5", style: "header-five" },
-    { label: "H6", style: "header-six" },
-    { label: "Blockquote", style: "blockquote" },
-    { label: "Unordered list", style: "unordered-list-item" },
-    { label: "Ordered list", style: "ordered-list-item" },
+    {label: "H1", style: "header-one"},
+    {label: "H2", style: "header-two"},
+    {label: "H3", style: "header-three"},
+    {label: "H4", style: "header-four"},
+    {label: "H5", style: "header-five"},
+    {label: "H6", style: "header-six"},
+    {label: "Blockquote", style: "blockquote"},
+    {label: "Unordered list", style: "unordered-list-item"},
+    {label: "Ordered list", style: "ordered-list-item"},
 ];
 
 const BlockStyleControls = (props: any) => {
-    const { editorState } = props;
+    const {editorState} = props;
     const selection = editorState.getSelection();
     const blockType = editorState
         .getCurrentContent()
@@ -76,9 +76,9 @@ const BlockStyleControls = (props: any) => {
 };
 
 var INLINE_STYLES = [
-    { label: "Bold", style: "BOLD" },
-    { label: "Italic", style: "ITALIC" },
-    { label: "Underline", style: "UNDERLINE" },
+    {label: "Bold", style: "BOLD"},
+    {label: "Italic", style: "ITALIC"},
+    {label: "Underline", style: "UNDERLINE"},
 ];
 
 const InlineStyleControls = (props: any) => {
@@ -99,8 +99,8 @@ const InlineStyleControls = (props: any) => {
     );
 };
 
-export { BlockStyleControls };
-export { InlineStyleControls };
+export {BlockStyleControls};
+export {InlineStyleControls};
 
 export {BLOCK_TYPES};
 export {INLINE_STYLES};

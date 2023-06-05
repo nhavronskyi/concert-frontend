@@ -1,8 +1,6 @@
 import './grid.css';
 import {IEvent} from "../../interfaces/IEvent";
-import {
-    getLocation, getPaginatedEvents, getPaginatedEventsByLocation
-} from "../../service/EventService";
+import {getLocation, getPaginatedEvents, getPaginatedEventsByLocation} from "../../service/EventService";
 import React, {useEffect, useState} from "react";
 import {Pagination} from "@mui/material";
 import {useNavigate} from "react-router-dom";

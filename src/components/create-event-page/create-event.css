@@ -72,6 +72,7 @@
     color: #17181C;
     text-align: center;
 }
+
 .main-box {
     border: 2px solid black;
     width: 80%;
@@ -94,6 +95,7 @@
 .customDateTimePicker .MuiInputBase-root {
     font-size: 18px;
 }
+
 .customDateTimePicker .MuiInputLabel-root {
     font-size: 18px;
 }
@@ -127,7 +129,7 @@
     justify-content: center;
 }
 
-.button-container button{
+.button-container button {
     margin: 20px;
 
     background: transparent;

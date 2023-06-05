@@ -33,45 +33,45 @@ export function ShowEventPage() {
     }, []);
 
     return (<div>
-            <Header/>
-            <div className="main-img">
-                <img src={event.image} alt="Image not found" key={event.id} className="img-cover"/>
+        <Header/>
+        <div className="main-img">
+            <img src={event.image} alt="Image not found" key={event.id} className="img-cover"/>
+        </div>
+        <div className="image-text">{event.title} </div>
+        <div className="container">
+            <div className="section1">
+                <p className="about-event"> ПРО ПОДІЮ </p>
+                <p className="about-event-info">
+                    "{event.title}" відбудеться {formattedDate} o <u>{formattedTime}</u> годині у
+                    місті {event.location}.
+                </p>
+                <DescriptionConverter description={event.description}/>
             </div>
-            <div className="image-text">{event.title} </div>
-            <div className="container">
-                <div className="section1">
-                    <p className="about-event"> ПРО ПОДІЮ </p>
-                    <p className="about-event-info">
-                        "{event.title}" відбудеться {formattedDate} o <u>{formattedTime}</u> годині у
-                        місті {event.location}.
-                    </p>
-                    <DescriptionConverter description={event.description}/>
-                </div>
 
-                <div className="section2">
-                    <div className="section2-fixed">
-                        <div className="black-box"><p>{event.title}</p></div>
-                        <div className="section2-text">
-                            <div className="icon-text">
-                                <img src={location} alt="location"/>
-                                <p>{event.location}</p>
-                            </div>
-                            <div className="icon-text">
-                                <img src={calendar} alt="location"/>
-                                <p>{formattedDate} o {formattedTime}</p>
-                            </div>
-                            <div className="icon-text">
-                                <img src={money} alt="location"/>
-                                <p>{event.price} грн </p>
-                            </div>
+            <div className="section2">
+                <div className="section2-fixed">
+                    <div className="black-box"><p>{event.title}</p></div>
+                    <div className="section2-text">
+                        <div className="icon-text">
+                            <img src={location} alt="location"/>
+                            <p>{event.location}</p>
                         </div>
-                        <div className="btn-container">
-                            <button className="black-btn-sm"> Купити </button>
+                        <div className="icon-text">
+                            <img src={calendar} alt="location"/>
+                            <p>{formattedDate} o {formattedTime}</p>
                         </div>
+                        <div className="icon-text">
+                            <img src={money} alt="location"/>
+                            <p>{event.price} грн </p>
+                        </div>
+                    </div>
+                    <div className="btn-container">
+                        <button className="black-btn-sm"> Купити</button>
                     </div>
                 </div>
             </div>
-        </div>);
+        </div>
+    </div>);
 }
 
 export default ShowEventPage;

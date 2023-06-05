@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {convertToRaw, EditorState, RichUtils, ContentState} from 'draft-js';
+import {ContentState, convertToRaw, EditorState, RichUtils} from 'draft-js';
 import Editor from '@draft-js-plugins/editor';
 import {BlockStyleControls, InlineStyleControls} from '../show-event-page/TextEditor';
 import '../show-event-page/event-info.css';

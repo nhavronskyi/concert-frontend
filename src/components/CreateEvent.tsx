@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {Box, Button, Input, TextField} from "@mui/material";
 import {buttonStyle, createEvent, getImage, uploadImage} from "../service/EventService";
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
+import {DateTimePicker, LocalizationProvider} from '@mui/x-date-pickers';
 
 export function CreateEvent() {
     const
@@ -31,7 +31,7 @@ export function CreateEvent() {
         }
     };
     const addEvent = (): void => {
-        const event = {title, location, description, date : date  || new Date(), price, image};
+        const event = {title, location, description, date: date || new Date(), price, image};
         createEvent(event).then(r => r);
     };
 
@@ -55,9 +55,11 @@ export function CreateEvent() {
             <form onSubmit={addEvent}>
                 <Box><TextField name="title" id="title" fullWidth label="Title" variant="standard" value={title}
                                 onChange={handleChanges}/></Box>
-                <Box><TextField name="location" id="location" fullWidth label="Location" variant="standard" value={location}
+                <Box><TextField name="location" id="location" fullWidth label="Location" variant="standard"
+                                value={location}
                                 onChange={handleChanges}/></Box>
-                <Box><TextField name="description" id="description" fullWidth multiline rows={4} label="Description" value={description}
+                <Box><TextField name="description" id="description" fullWidth multiline rows={4} label="Description"
+                                value={description}
                                 variant="standard" onChange={handleChanges}/></Box>
                 <Box><TextField name="price" id="price" label="Price" fullWidth variant="standard" value={price}
                                 onChange={handleChanges}/></Box>
