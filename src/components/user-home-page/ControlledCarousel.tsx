@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {getAllEvents} from "../../service/EventService";
 import {Carousel} from "react-bootstrap";
 import defaultImage from '../../images/soloviy.jpg';
@@ -10,8 +10,10 @@ import {IEvent} from "../../interfaces/IEvent";
 function ControlledCarousel() {
     const [events, setEvents] = useState<IEvent[]>([]);
 
-    getAllEvents().then(response => response.json())
-        .then(json => setEvents(json));
+    useEffect(() => {
+        getAllEvents().then(response => response.json())
+            .then(json => setEvents(json));
+    }, []);
 
     return (
         <Carousel>

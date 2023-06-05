@@ -15,9 +15,12 @@ function EventsFilters() {
     const [selectedCity, setSelectedCity] = useState('');
     const [selectedDate, setSelectedDate] = useState('');
 
-    getAllLocations()
-        .then(response => response.json())
-        .then(json => setCities(json));
+    useEffect(() => {
+        getAllLocations()
+            .then(response => response.json())
+            .then(json => setCities(json));
+    }, []);
+
 
     useEffect(() => {
         getPaginatedEvents(page, pageSize)

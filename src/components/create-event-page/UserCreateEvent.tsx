@@ -76,7 +76,7 @@ function UserCreateEvent() {
 
     return (<div className="create-container">
         <div className="main-box">
-            <p className="title">Творіть і надихайтеся: <i>cтворіть</i> свою подію</p>
+            <p className="title">Творіть і надихайтеся: <i>cтворіть свою подію</i></p>
             <form onSubmit={addEvent}>
                 <TextField name="title" fullWidth label="Назва-заголовок події"
                            variant="standard" value={title}
