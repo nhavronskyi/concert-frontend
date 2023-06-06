@@ -36,7 +36,7 @@ export function Header() {
             sx={{backgroundColor: "black", color: "white"}}
         >
             <Toolbar className="header-container">
-                <img src={logo} alt="Logo" style={{width: "43px", height: "43px"}}/>
+                <a href="http://localhost:3000/home"><img src={logo} alt="Logo" style={{width: "43px", height: "43px"}}/></a>
                 <DatePicker/>
             </Toolbar>
         </AppBar>
