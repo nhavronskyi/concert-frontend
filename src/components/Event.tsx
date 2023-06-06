@@ -3,7 +3,6 @@ import {IEvent} from "../interfaces/IEvent";
 import '../App.css';
 import {Box, Button, Grid} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import {CreateEvent} from "./CreateEvent";
 import {buttonStyle, deleteEvent, getAllEvents} from "../service/EventService";
 
 export function Event() {
@@ -44,7 +43,7 @@ export function Event() {
                     </Grid>
                 ))}
             </Grid>
-            <CreateEvent/>
+            <Button variant="contained" onClick={() => navigate(`/create`)} sx={buttonStyle()}>Create Event</Button>
         </Box>
     )
 }
