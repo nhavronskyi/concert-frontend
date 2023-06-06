@@ -29,12 +29,14 @@ export const getAllLocations = () => {
     })
 }
 
-export const getEventsByLocation = (location: string) => {
-    return fetch(`${urlEvents}/location?location=${location}`, {
-        method: "get",
+
+export const getFilteredEvents = (page: number, size: number, searchData: any) => {
+    return fetch(`${urlEvents}/filtered?page=${page}&size=${size}`, {
+        method: 'post',
         headers: headers,
+        body: JSON.stringify(searchData)
     });
-}
+};
 
 export const getPaginatedEvents = (page: number, size: number) => {
     return fetch(`${urlEvents}/pagination?page=${page}&size=${size}`, {
