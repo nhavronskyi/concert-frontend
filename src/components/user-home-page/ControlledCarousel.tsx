@@ -12,12 +12,22 @@ function ControlledCarousel() {
 
     useEffect(() => {
         getAllEvents().then(response => response.json())
-            .then(json => setEvents(json));
+            .then(json => setEvents(shuffle(json)));
     }, []);
 
+    function shuffle(events : IEvent[]) {
+        let currentIndex = events.length,  randomIndex;
+        while (currentIndex != 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [events[currentIndex], events[randomIndex]] = [
+                events[randomIndex], events[currentIndex]];
+        }
+        return events;
+    }
     return (
         <Carousel>
-            {events.map((event) => (
+            {events.slice(0,5).map((event) => (
                 <Carousel.Item key={event.id}>
                     <div className="image-container">
                         <div className="image-content">
