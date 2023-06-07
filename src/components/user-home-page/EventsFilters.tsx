@@ -1,6 +1,6 @@
 import './grid.css';
 import {IEvent} from "../../interfaces/IEvent";
-import {getAllLocations, getPaginatedEvents} from "../../service/EventService";
+import {getAllLocations, getFilteredEvents, getPaginatedEvents} from "../../service/EventService";
 import React, {useEffect, useState} from "react";
 import Grid from "./Grid";
 
@@ -21,9 +21,10 @@ function EventsFilters() {
             .then(json => setCities(json));
     }, []);
 
-
     useEffect(() => {
-        getPaginatedEvents(page, pageSize)
+        if (selectedDate != '' || minPrice != '' || maxPrice != '' || selectedCity != '') {
+            handleSearch();
+        } else getPaginatedEvents(page, pageSize)
             .then((response) => response.json())
             .then((json) => {
                 setEvents(json.content);
@@ -34,8 +35,32 @@ function EventsFilters() {
     const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
         setPage(newPage - 1);
     };
+
     const handleSearch = () => {
-        // Виконати пошук з використанням збережених значень minPrice, maxPrice, selectedCity та selectedDate
+        const searchData = {
+            minPrice: minPrice, maxPrice: maxPrice, selectedCity: selectedCity, selectedDate: selectedDate
+        };
+
+        getFilteredEvents(page, pageSize, searchData)
+            .then((response) => response.json())
+            .then((json) => {
+                setEvents(json.content);
+                setTotalPages(json.totalPages);
+            });
+    };
+
+    const handleReset = () => {
+        setMinPrice('');
+        setMaxPrice('');
+        setSelectedCity('');
+        setSelectedDate('');
+
+        getPaginatedEvents(page, pageSize)
+            .then((response) => response.json())
+            .then((json) => {
+                setEvents(json.content);
+                setTotalPages(json.totalPages);
+            });
     };
 
     return (<div>
@@ -59,8 +84,8 @@ function EventsFilters() {
                 <select className="city" value={selectedCity} onChange={e => setSelectedCity(e.target.value)}>
                     <option value="">Місто</option>
                     {cities.map(city => (<option key={city} value={city}>
-                            {city}
-                        </option>))}
+                        {city}
+                    </option>))}
                 </select>
                 <select className="date" value={selectedDate} onChange={e => setSelectedDate(e.target.value)}>
                     <option value="">Дата</option>
@@ -69,7 +94,8 @@ function EventsFilters() {
                     <option value="Цього тижня">Цього тижня</option>
                     <option value="Цього місяця">Цього місяця</option>
                 </select>
-                <button className="search" onClick={handleSearch}>Пошук</button>
+                <button className="btn" onClick={handleSearch}>Пошук</button>
+                <button className="btn" onClick={handleReset}>Скинути</button>
             </div>
         </div>
         <Grid
