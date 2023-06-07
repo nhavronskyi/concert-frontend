@@ -1,82 +1,57 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+}
+
+.carousel-indicators .active {
+    background-color: black;
+}
+.carousel-indicators [data-bs-target]:not(.active) {
+    background-color: black !important;
+}
+
 .image-container {
-    position: relative;
-    margin-top: 80px;
+    margin-top: 95px;
     width: 100%;
-    height: 90vh;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+}
+.half {
+    flex-basis: 50%;
+    border: 1px solid black;
 }
 
 .image-content {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    margin-right: 50px;
+    padding: 25px;
+    background-color: #eceaea;
 }
 
 .event-details {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    margin-left: 50px;
+    padding-right: 20px;
+    padding-left: 110px;
+    padding-top: 8%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 20px 20px 20px 0;
+    justify-content: left;
+    color: black;
+    background-color: #eceaea;
 }
-
-.event-title-description {
-    position: absolute;
-    top: 30%;
-    width: 40%;
+.more {
+    margin-top: 20px;
+    font-weight: 500;
+    width: 120px;
+    font-size: 18px;
+    padding:5px;
+    border: 1px solid black;
+    background-color: #f2f2f2;
+    box-shadow: 4px 8px 0 0 rgba(0, 0, 0, 0.7);
+    transition: box-shadow 0.4s, background-color 0.3s;
 }
-
-.event-title {
-    font-size: 3.0rem;
-    text-align: center;
-    font-weight: bold;
-}
-
-.event-description {
-    font-size: 1.5rem;
-    text-align: center;
-    color: #cecece;
-}
-
-.event-location {
-    position: absolute;
-    top: 5%;
-    right: 10%;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.event-date-price {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: flex-end;
-    position: absolute;
-    bottom: 15%;
-    font-size: 1.3rem;
-}
-
-.event-date, .event-price {
-    flex-basis: 50%;
-    text-align: center;
-}
-
-.event-date::before,
-.event-price::before {
-    content: "  • ";
-}
-
-.event-date::before {
-    color: #024aff;
-}
-
-.event-price::before {
-    color: #FFC107;
+.more:hover {
+    box-shadow: none;
+    background-color: white;
 }

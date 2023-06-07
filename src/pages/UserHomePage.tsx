@@ -3,6 +3,7 @@ import '../App.css';
 import Header from "../components/Header";
 import ControlledCarousel from "../components/user-home-page/ControlledCarousel";
 import EventsLocation from "../components/user-home-page/EventsLocation";
+import Footer from "../components/Footer";
 
 
 function UserHomePage() {
@@ -11,6 +12,7 @@ function UserHomePage() {
             <Header/>
             <ControlledCarousel/>
             <EventsLocation/>
+            <Footer/>
         </Box>
     );
 }

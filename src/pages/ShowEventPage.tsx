@@ -10,6 +10,7 @@ import uk from 'date-fns/locale/uk';
 import location from "../images/location.png";
 import calendar from "../images/calendar.png";
 import money from "../images/money.png";
+import Footer from "../components/Footer";
 
 export function ShowEventPage() {
     const {id} = useParams<{ id: string }>();
@@ -71,6 +72,7 @@ export function ShowEventPage() {
                 </div>
             </div>
         </div>
+        <Footer/>
     </div>);
 }
 

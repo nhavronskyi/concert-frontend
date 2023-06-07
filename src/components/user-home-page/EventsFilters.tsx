@@ -72,14 +72,14 @@ function EventsFilters() {
                     className="price"
                     value={minPrice}
                     onChange={e => setMinPrice(e.target.value)}
-                    placeholder="Мінімальна ціна"
+                    placeholder="Ціна від"
                 />
                 <input
                     type="text"
                     className="price"
                     value={maxPrice}
                     onChange={e => setMaxPrice(e.target.value)}
-                    placeholder="Максимальна ціна"
+                    placeholder="Ціна до"
                 />
                 <select className="city" value={selectedCity} onChange={e => setSelectedCity(e.target.value)}>
                     <option value="">Місто</option>
@@ -94,8 +94,8 @@ function EventsFilters() {
                     <option value="Цього тижня">Цього тижня</option>
                     <option value="Цього місяця">Цього місяця</option>
                 </select>
-                <button className="btn" onClick={handleSearch}>Пошук</button>
-                <button className="btn" onClick={handleReset}>Скинути</button>
+                <button className="btn search" onClick={handleSearch}>Пошук</button>
+                <button className="btn reset" onClick={handleReset}>Скинути</button>
             </div>
         </div>
         <Grid
