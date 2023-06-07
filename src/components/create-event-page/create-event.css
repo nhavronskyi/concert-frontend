@@ -142,5 +142,10 @@
     font-size: 20px;
     line-height: 25px;
     padding: 12px 32px;
+    transition: background-color 0.3s;
+}
+.button-container button:hover {
+    color: #f9f9fa;
+    background-color: black;
 }
 
