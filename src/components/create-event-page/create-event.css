@@ -144,3 +144,7 @@
     padding: 12px 32px;
 }
 
+button:disabled {
+    color: gray;
+}
+

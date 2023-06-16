@@ -4,7 +4,7 @@ import Editor from '@draft-js-plugins/editor';
 import {BlockStyleControls, InlineStyleControls} from '../show-event-page/TextEditor';
 import '../show-event-page/event-info.css';
 import './create-event.css';
-import {getAllLocations, createEvent, getImage, uploadImage} from "../../service/EventService";
+import {createEvent, getAllLocations, getImage, uploadImage} from "../../service/EventService";
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {DateTimePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
@@ -66,13 +66,18 @@ function UserCreateEvent() {
         e.preventDefault();
 
         const description = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
-        const event = { title, location, description, date: date || new Date(), price, image };
+        const event = {title, location, description, date: date || new Date(), price, image};
         createEvent(event)
             .then(() => {
                 window.location.reload();
             });
     };
 
+    const isPriceValid = () => Number.parseInt(price) >= 0;
+    const isTitleValid = () => title != "";
+    const isLocationValid = () => location != "";
+
+    const isDisabledButton = (): boolean => !isPriceValid() || !isTitleValid() || !isLocationValid();
 
     return (<div className="create-container">
         <div className="main-box">
@@ -80,14 +85,16 @@ function UserCreateEvent() {
             <form onSubmit={addEvent}>
                 <TextField name="title" fullWidth label="Назва-заголовок події"
                            variant="standard" value={title}
+                           error={!isTitleValid()}
                            style={{marginBottom: '40px'}}
                            InputLabelProps={{
                                style: {fontSize: '18px'},
                            }}
                            onChange={handleChanges}/>
 
-                <TextField name="price" label="Ціна" fullWidth variant="standard"
+                <TextField type="number" name="price" label="Ціна" fullWidth variant="standard"
                            value={price}
+                           error={!isPriceValid()}
                            style={{marginBottom: '40px'}}
                            InputLabelProps={{
                                style: {fontSize: '18px'},
@@ -97,6 +104,7 @@ function UserCreateEvent() {
                     <FormControl style={{width: '283px'}}>
                         <InputLabel>Розташування</InputLabel>
                         <Select
+                            error={!isLocationValid()}
                             value={location}
                             label="Розташування"
                             onChange={e => setLocation(e.target.value)}
@@ -146,7 +154,9 @@ function UserCreateEvent() {
                 </div>
 
                 <div className="button-container">
-                    <button type="submit" id="create">Створити</button>
+                    <button type="submit" id="create" disabled={isDisabledButton()}
+                    >Створити
+                    </button>
                     <button onClick={refreshFields}>Очистити</button>
                 </div>
             </form>
