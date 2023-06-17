@@ -36,7 +36,7 @@ function ControlledCarousel() {
     };
 
     return (
-        <Carousel className="custom-carousel">
+        <Carousel interval={3000}>
             {events.slice(0,5).map((event) => (
                 <Carousel.Item key={event.id}>
                     <div className="image-container">

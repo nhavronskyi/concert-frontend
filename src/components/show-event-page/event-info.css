@@ -135,6 +135,12 @@
     text-transform: uppercase;
     color: #a61a1a;
     background-color: rgb(255, 255, 255);
+    transition: background-color 0.3s;
+}
+
+.black-btn-sm:hover {
+    color: #f8f6f6;
+    background-color: black
 }
 
 .btn-container {

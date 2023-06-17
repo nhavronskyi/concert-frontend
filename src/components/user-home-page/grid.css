@@ -133,7 +133,13 @@
     font-size: 12px;
     line-height: 18px;
     padding: 8px 30px;
+    transition: background-color 0.3s;
 }
+.black-btn-small:hover {
+    color: #f8f8fa;
+    background-color: black;
+}
+
 
 .filters {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
