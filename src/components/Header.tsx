@@ -8,6 +8,12 @@ export function Header() {
     });
 
     const [headerSize, setHeaderSize] = useState("regular");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        setIsLoggedIn(false);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -26,6 +32,11 @@ export function Header() {
         };
     }, []);
 
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        setIsLoggedIn(!!token);
+    }, []);
+
 
     return (<AppBar
             position="fixed"
@@ -37,9 +48,25 @@ export function Header() {
                                                           style={{width: "50px", height: "50px", marginLeft: "38px"}}/></a>
                 <div className="header-links">
                     <a className="all-events" href="http://localhost:3000/home/filters">УСІ ПОДІЇ</a>
-                    <a className="create-event" href="http://localhost:3000/create">Створити подію</a>
-                    <a className="login" href="http://localhost:3000/login">Увійти</a>
-                    <a className="register" href="http://localhost:3000/register">Зареєструватись</a>
+                    {!isLoggedIn ? (
+                        <a className="create-event" href="http://localhost:3000/login">
+                            Створити подію
+                        </a>
+                    ) : (
+                        <a className="create-event" href="http://localhost:3000/create">
+                            Створити подію
+                        </a>
+                    )}
+                    {!isLoggedIn && (
+                        <a className="login" href="http://localhost:3000/login">
+                            Увійти
+                        </a>
+                    )}
+                    {isLoggedIn && (
+                        <a className="logout" onClick={handleLogout}>
+                            Вийти
+                        </a>
+                    )}
                 </div>
             </Toolbar>
         </AppBar>);

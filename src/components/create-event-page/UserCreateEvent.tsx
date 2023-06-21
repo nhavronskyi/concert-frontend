@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ContentState, convertToRaw, EditorState, RichUtils} from 'draft-js';
 import Editor from '@draft-js-plugins/editor';
 import {BlockStyleControls, InlineStyleControls} from '../show-event-page/TextEditor';
@@ -19,9 +19,11 @@ function UserCreateEvent() {
     const [editorState, setEditorState] = useState(() => EditorState.createWithContent(ContentState.createFromText('Опишіть вашу подію')));
     const [selectedImageName, setSelectedImageName] = useState('');
 
-    getAllLocations()
-        .then(response => response.json())
-        .then(json => setCities(json));
+    useEffect(() => {
+        getAllLocations()
+            .then(response => response.json())
+            .then(json => setCities(json));
+    }, []);
 
     const handleChanges = (e: React.ChangeEvent<HTMLInputElement>): void => {
         switch (e.target.name) {
