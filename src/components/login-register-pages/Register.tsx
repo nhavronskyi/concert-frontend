@@ -88,7 +88,7 @@ export function Register() {
                                setConfirmPassword(e.target.value);
                                setPasswordMismatch(false);
                            }}/>
-                {passwordMismatch && <p>Паролі не збігаються</p>}
+                {passwordMismatch && <p className="error-message">Паролі не збігаються</p>}
                 {errorMessage && (
                     <p className="error-message">{errorMessage}</p>
                 )}
