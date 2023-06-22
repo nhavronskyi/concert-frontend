@@ -7,13 +7,12 @@ import ShowEventPage from "./pages/ShowEventPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import EditPage from "./pages/EditPage";
-import HomePage from "./pages/HomePage";
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index element={<HomePage/>}/>
+                <Route index element={<UserHomePage/>}/>
                 <Route path="/events/:id" element={<EditPage/>}/>
                 <Route path="/home" element={<UserHomePage/>}/>
                 <Route path="/home/filters" element={<UserHomeFiltersPage/>}/>
