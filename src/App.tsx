@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import UserHomePage from "./pages/UserHomePage";
+import UserHomeFiltersPage from "./pages/UserHomeFiltersPage";
+import UserCreatePage from "./pages/UserCreatePage";
+import ShowEventPage from "./pages/ShowEventPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import EditPage from "./pages/EditPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route index element={<UserHomePage/>}/>
+                <Route path="/events/:id" element={<EditPage/>}/>
+                <Route path="/home" element={<UserHomePage/>}/>
+                <Route path="/home/filters" element={<UserHomeFiltersPage/>}/>
+                <Route path="/create" element={<UserCreatePage/>}/>
+                <Route path="/events/show/:id" element={<ShowEventPage/>}/>
+                <Route path="/login" element={<LoginPage/>}/>
+                <Route path="/register" element={<RegisterPage/>}/>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
