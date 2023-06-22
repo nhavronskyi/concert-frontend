@@ -1,13 +1,13 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import EditPage from "./pages/EditPage";
-import HomePage from "./pages/HomePage";
 import UserHomePage from "./pages/UserHomePage";
 import UserHomeFiltersPage from "./pages/UserHomeFiltersPage";
 import UserCreatePage from "./pages/UserCreatePage";
 import ShowEventPage from "./pages/ShowEventPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import EditPage from "./pages/EditPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
     return (

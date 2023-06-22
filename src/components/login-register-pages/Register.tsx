@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {TextField} from "@mui/material";
 import '../create-event-page/create-event.css'
 import './login-register.css';
+import {register} from "../../service/EventService";
+import {useNavigate} from "react-router-dom";
 
 
 export function Register() {
@@ -11,6 +13,8 @@ export function Register() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordMismatch, setPasswordMismatch] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
 
     const handleRegistration = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -21,15 +25,22 @@ export function Register() {
         }
 
         try {
-            fetch('/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ firstName, lastName, email, password }),
-            });
+            const response = await register(firstName, lastName, email, password);
+
+            if (response.ok) {
+                const responseText = await response.text();
+                if (responseText.length !== 0) {
+                    localStorage.setItem('token', responseText);
+                    navigate(`/home`);
+                    window.scrollTo(0, 0);
+                } else {
+                    setErrorMessage("Користувач з таким email уже існує");
+                }
+            } else {
+                setErrorMessage("Користувач з таким email уже існує");
+            }
         } catch (error) {
-            console.error('Помилка реєстрації:', error);
+            setErrorMessage("Виникла помилка під час спроби реєсстрації");
         }
     };
 
@@ -78,6 +89,9 @@ export function Register() {
                                setPasswordMismatch(false);
                            }}/>
                 {passwordMismatch && <p>Паролі не збігаються</p>}
+                {errorMessage && (
+                    <p className="error-message">{errorMessage}</p>
+                )}
                 <div className="button-container">
                     <button type="submit" id="create">Зареєструватися</button>
                 </div>

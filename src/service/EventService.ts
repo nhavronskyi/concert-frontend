@@ -3,15 +3,16 @@ import {ILocation} from "../interfaces/ILocation";
 
 const urlEvents: string = "http://localhost:8080/events";
 const url: string = "http://localhost:8080";
-const credentials: string = btoa("admin:admin")
 
 const headers = {
-    "Authorization": `Basic ${credentials}`,
-    "content-type": "application/json"
+    "Authorization": `Bearer ${localStorage.getItem('token')}`,
+    "Content-Type": "application/json"
 };
 export const getAllEvents = () => {
     return fetch(urlEvents, {
-        headers: headers
+        headers: {
+            "Content-Type": "application/json"
+        }
     })
 }
 
@@ -25,7 +26,9 @@ export const findLocation = (locationData: ILocation) => {
 export const getAllLocations = () => {
     return fetch(`${url}/location/all`, {
         method: "get",
-        headers: headers
+        headers: {
+            "Content-Type": "application/json"
+        }
     })
 }
 
@@ -41,20 +44,46 @@ export const getFilteredEvents = (page: number, size: number, searchData: any) =
 export const getPaginatedEvents = (page: number, size: number) => {
     return fetch(`${urlEvents}/pagination?page=${page}&size=${size}`, {
         method: "get",
-        headers: headers
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+}
+
+export const login = (email: string, password: string) => {
+    return fetch(`${url}/login`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({email, password}),
+    })
+}
+
+export const register = (firstName: string, lastName: string, email: string, password: string) => {
+    return fetch(`${url}/register`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ firstName, lastName, email, password }),
     })
 }
 
 export const getPaginatedEventsByLocation = (page: number, size: number, location: string) => {
     return fetch(`${urlEvents}/pagination/location?page=${page}&size=${size}&location=${location}`, {
         method: "get",
-        headers: headers,
+        headers: {
+            "Content-Type": "application/json"
+        }
     });
 }
 
 export const getEvent = (id: string) => {
     return fetch(`${urlEvents}/${id}`, {
-        headers: headers,
+        headers: {
+            "Content-Type": "application/json"
+        }
     });
 };
 
@@ -93,10 +122,10 @@ export const uploadImage = (title: string, file: any) => {
     fetch(`${urlEvents}/image/${title}`, {
         method: 'post',
         headers: {
-            "Authorization": `Basic ${credentials}`
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
         },
         body: formData
-    }).then(r => r);
+    });
 };
 
 export const getImage = (title: string) => {
