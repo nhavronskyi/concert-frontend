@@ -10,14 +10,25 @@ create docker-compose.yml
 
 ```yml
 services:
-  backend:
-    image: nhavronskyi/concert-backend:latest
+  db:
+    image: nhavronskyi/concert-database:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=rootroot
     ports:
-      - 8080:8080
+      - 5432:5432
+  backend:
+      image: nhavronskyi/concert-backend:latest
+      ports:
+        - 8080:8080
+      links:
+            - db
   frontend:
     image: nhavronskyi/concert-frontend:latest
     ports:
       - 3000:3000
+    links:
+          - backend
 ```
 
 ### Step 3
