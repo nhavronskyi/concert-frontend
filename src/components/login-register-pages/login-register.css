@@ -1,0 +1,42 @@
+.login-register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-register-form {
+    width: 35%;
+    text-align: center;
+    border: 3px solid black;
+    padding: 15px;
+
+}
+.login-page {
+    height: 100vh;
+}
+.register-page {
+    position: relative;
+    margin-top: 120px;
+}
+.login-register-title {
+    font-size: 36px;
+}
+
+.forgot-password {
+    margin: 0;
+    text-align: left;
+}
+.forgot-password a{
+    color: black;
+}
+.register {
+    color:black;
+    font-size: 18px;
+    margin: 0;
+}
+.register:hover {
+    color: #807e7e;
+}
+.error-message {
+    color: red;
+}
